@@ -1,19 +1,22 @@
-import axios from "axios";
-import react, { useEffect, useState } from "react";
-import ReactDOM from "react-dom";
+import Layout from "./Layouts/Layout";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import HomePage from "../pages/HomePage";
+import TestimoniesPage from "../pages/TestimoniesPage";
 
 const Index = () => {
-    const [userInfo, setUserInfo] = useState(null);
+    return (
+        <>
+            <Router>
+                <Layout>
+                    <Switch>
+                        <Route path="/" component={HomePage} exact />
 
-    useEffect(() => {
-        axios.get("/api/").then(data=>setUserInfo(data.data));
-    }, [userInfo])
-
-    return <>
-        {userInfo && (<>{userInfo.map(user=>{
-            return <h1>{user.name} <br/> {user.id} <br/> {user.email}</h1>
-        })}</>)}
-    </>
+                        <Route path="/testimony" component={TestimoniesPage} />
+                    </Switch>
+                </Layout>
+            </Router>
+        </>
+    );
 };
 
 export default Index;

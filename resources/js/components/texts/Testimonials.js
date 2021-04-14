@@ -1,9 +1,11 @@
-import { Box, Text } from "@chakra-ui/layout";
+import { VStack } from "@chakra-ui/layout";
+import { Text } from "@chakra-ui/layout";
 
 const Testimonials = ({ message, name, rating }) => {
     return (
-        <Box textAlign="center">
+        <VStack textAlign="center">
             <Text
+                as="q"
                 fontSize="18px"
                 fontWeight="600"
                 color="black"
@@ -22,7 +24,7 @@ const Testimonials = ({ message, name, rating }) => {
                         return <>⭐</>;
                     })}
             </Text>
-        </Box>
+        </VStack>
     );
 };
 

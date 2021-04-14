@@ -5,6 +5,7 @@ namespace App\Http\Controllers\api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\TestimonyModel;
+use Facade\FlareClient\Http\Response;
 use Illuminate\Support\Facades\DB;
 
 class TestimonyController extends Controller
@@ -61,6 +62,20 @@ class TestimonyController extends Controller
     public function showUnverified(){
         $data = TestimonyModel::where("isVerified","=",0)->get();
         return response()->json($data);
+    }
+
+
+    public function showVerifiedByNumber($num){
+        $count = TestimonyModel::where([["isVerified","=",1],["rating","=",5]])->count();
+
+        if($count < $num){
+            return;
+        }
+        else{
+            $data = TestimonyModel::where([["isVerified","=",1],["rating","=",5]])->take($num)->get();
+            return response()->json($data);
+        }
+       
     }
 
     /**

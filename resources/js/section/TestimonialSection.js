@@ -17,7 +17,7 @@ const TestimonialSection = () => {
         >
             <SectionTitle>Testimonials</SectionTitle>
             <Container maxW="8xl">
-                <SimpleGrid columns={3} spacing={5}>
+                <SimpleGrid columns={{base:1,md:3}} spacing={5}>
                     {testimonials.slice(0, 3).map((item, index) => {
                         return (
                             <Testimonials

@@ -14,4 +14,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/',[App\Http\Controllers\api\DataController::class,'index']);
+
+
+//Get All Testimonies
+Route::get('/testimony',[App\Http\Controllers\api\TestimonyController::class,'index']);
+
+//Delete A Testimony By ID
+Route::delete('/testimony/{id}',[App\Http\Controllers\api\TestimonyController::class,'destroy']);
+//Update A Testimony to verified By ID
+Route::put('/testimony/{id}',[App\Http\Controllers\api\TestimonyController::class,'updateToVerified']);
+
+
+//Get All Unverified Testimonies
+Route::get('/testimony/unverified',[App\Http\Controllers\api\TestimonyController::class,'showUnverified']);
+
+//Create a Testimony
+Route::post('/testimony',[App\Http\Controllers\api\TestimonyController::class,'store']); 

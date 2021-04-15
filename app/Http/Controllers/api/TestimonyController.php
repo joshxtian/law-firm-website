@@ -11,13 +11,21 @@ use Illuminate\Support\Facades\DB;
 class TestimonyController extends Controller
 {
     //GET All Testimonials
+
+    //Query: SELECT * FROM 'testimony_models'
+
     public function index()
     {
         $data = TestimonyModel::all();
         return $data;
     }
 
+
+
     //CREATE A Testimonial
+
+    //Query: INSERT INTO 'testimony_models' ('name','email','message','rating') VALUES ('value1','value2','value3','value4')
+
     public function store(Request $request)
     {
         $data = new TestimonyModel();
@@ -30,6 +38,9 @@ class TestimonyController extends Controller
 
 
     //GET All Unverified Testimonial
+
+     //Query: SELECT * FROM 'testimony_models' WHERE 'isVerified' = 0
+
     public function showUnverified(){
         $data = TestimonyModel::where("isVerified","=",0)->get();
         return response()->json($data);
@@ -37,9 +48,11 @@ class TestimonyController extends Controller
 
 
     //GET Verified Testimonials By Number
+
+     //Query: SELECT * FROM 'testimony_models' WHERE 'isVerified' = 1
+
     public function showVerifiedByNumber($num){
         $count = TestimonyModel::where([["isVerified","=",1],["rating","=",5]])->count();
-
         if($count < $num){
             return;
         }
@@ -51,6 +64,9 @@ class TestimonyController extends Controller
     }
 
     //UPDATE isVerified to 1
+
+    //Query: SELECT * FROM 'testimony_models' SET 'isVerified' = [1] WHERE id = request.ID
+
     public function updateToVerified($id)
     {
         $data = TestimonyModel::find($id);
@@ -59,6 +75,9 @@ class TestimonyController extends Controller
     }
 
     //DELETE a testimonial by ID
+
+    //Query: DELETE FROM 'testimony_models' WHERE id = request.ID
+
     public function destroy($id)
     {   
         $data = TestimonyModel::find($id);

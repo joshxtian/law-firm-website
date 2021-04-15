@@ -21,6 +21,9 @@ const TestimoniesPage = () => {
     const isMount = useRef(false);
     const [testimonies, setTestimonies] = useState([]);
     const [uTestimony, setUTestimony] = useState([]);
+
+
+    
     useEffect(() => {
         if (!isMount.current) {
             const fetchTestimonies = async () => {

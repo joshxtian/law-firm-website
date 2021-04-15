@@ -3,7 +3,7 @@ import React from 'react'
 
 const DescriptionText = (props) => {
   return (
-    <Text as="p" fontSize="25px">
+    <Text as="p" fontSize="20px">
       {props.children}
     </Text>
   )

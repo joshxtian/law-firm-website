@@ -16,7 +16,6 @@ const Header = (props) => {
                     <Flex justify={{base:"center",xl:"flex-start"}} mt={{base:5, xl:0}}>
                         <List display="flex" alignItems="center">
                             <HeaderList to="/" label="Home" />
-                            <HeaderList to="/" label="About" />
                             <HeaderMenuList/>
                         </List>
                     </Flex>

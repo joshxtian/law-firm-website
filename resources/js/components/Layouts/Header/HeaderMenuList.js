@@ -25,11 +25,12 @@ const HeaderMenuList = () => {
                     </Heading>
                 </MenuButton>
                 <MenuList>
-                    <MenuItem>Our Victories</MenuItem>
+                    <MenuItem>
+                        <Link href="/victories">Our Victories</Link>
+                    </MenuItem>
                     <MenuItem>
                         <Link href="/testimony">Client Testimonies</Link>
                     </MenuItem>
-                    <MenuItem>Our Lawyers</MenuItem>
                 </MenuList>
             </Menu>
         </ListItem>

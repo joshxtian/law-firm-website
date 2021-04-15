@@ -16,12 +16,12 @@ const AboutSection = () => {
                             <Stack
                                 direction={{
                                     base: "column-reverse",
-                                    md: info.reversed === true ? "row-reverse" : "row",
+                                    xl: info.reversed === true ? "row-reverse" : "row",
                                 }}
                                 my={50}
                             >
                                 <Box
-                                    w={{ base: "100%", md: "50%" }}
+                                    w={{ base: "100%", xl: "50%" }}
                                     px={{ base: 0, xl:5}}
                                 >
                                     {info.paragraph.map(par=>{
@@ -33,7 +33,7 @@ const AboutSection = () => {
                                         </>
                                     })}
                                 </Box>
-                                <Box w={{ base: "100%", md: "50%" }}>
+                                <Box w={{ base: "100%", xl: "50%" }}>
                                     <Image src={info.image} />
                                 </Box>
                             </Stack>

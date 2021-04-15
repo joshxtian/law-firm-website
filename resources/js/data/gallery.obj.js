@@ -27,7 +27,22 @@ const gallery = [
   {
     id:6,
     alt:"Lorem ipsum, dolor sit amet!",
+    src:"./img/lawyer7.jpg"
+  },
+  {
+    id:7,
+    alt:"Lorem ipsum, dolor sit amet!",
     src:"./img/lawyer1.jpg"
+  },
+  {
+    id:8,
+    alt:"Lorem ipsum, dolor sit amet!",
+    src:"./img/lawyer8.jpg"
+  },
+  {
+    id:9,
+    alt:"Lorem ipsum, dolor sit amet!",
+    src:"./img/lawyer9.jpg"
   }
 ];
 

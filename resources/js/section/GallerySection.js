@@ -11,7 +11,7 @@ const GallerySection = () => {
             <Container maxW={"9xl"}>
                 <Center>
                     {" "}
-                    <SimpleGrid columns={3} spacing={3}>
+                    <SimpleGrid columns={{base:1,md:2,xl:3}} spacing={3}>
                         {/* Insert Gallery Items */}
                         {gallery.map((image) => {
                             return <GalleryItem key={image.id} {...image} />;

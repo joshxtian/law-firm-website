@@ -19,8 +19,19 @@ import { IconContext } from "react-icons/lib";
 import { useState } from "react";
 import axios from "axios";
 import { Select } from "@chakra-ui/select";
+import { ModalOverlay } from "@chakra-ui/modal";
+import { Modal } from "@chakra-ui/modal";
+import { ModalContent } from "@chakra-ui/modal";
+import { ModalHeader } from "@chakra-ui/modal";
+import { ModalCloseButton } from "@chakra-ui/modal";
+import { ModalBody } from "@chakra-ui/modal";
+import { ModalFooter } from "@chakra-ui/modal";
+import { useDisclosure } from "@chakra-ui/hooks";
 
 const ContactSection = () => {
+    const { isOpen, onOpen, onClose } = useDisclosure()
+    const [message, setMessage] = useState("");
+    const [status, setStatus] = useState("");
     const [messageInfo, setMessageInfo] = useState({
         name: "",
         email: "",
@@ -55,7 +66,9 @@ const ContactSection = () => {
             !messageInfo.name ||
             !messageInfo.email ||
             !messageInfo.message ||
-            !messageInfo.email.includes("@" || rating === null || rating > 5 || rating < 1)
+            !messageInfo.email.includes(
+                "@" || rating === null || rating > 5 || rating < 1
+            )
         ) {
             console.log("Wrong information");
         } else {
@@ -66,7 +79,17 @@ const ContactSection = () => {
                     message: messageInfo.message,
                     rating: rating,
                 })
-                .then((response) => console.log(response));
+                .then((response) => {
+                    onOpen()
+                    
+                    if(response.status === 200){
+                        setMessage("You have successfully added a review and will be verified by website management!");
+                        setStatus("Success!")
+                    }else{
+                        setMessage("Something went wrong! Please try again later");
+                        setStatus("Error");
+                    }
+                });
         }
     };
 
@@ -78,6 +101,19 @@ const ContactSection = () => {
                 bg="brand.100"
                 py={"50px"}
             >
+                <Modal onClose={onClose} isOpen={isOpen} isCentered>
+                    <ModalOverlay />
+                    <ModalContent>
+                        <ModalHeader>{status}</ModalHeader>
+                        <ModalCloseButton />
+                        <ModalBody>
+                           {message}
+                        </ModalBody>
+                        <ModalFooter>
+                            <Button onClick={onClose}>Close</Button>
+                        </ModalFooter>
+                    </ModalContent>
+                </Modal>
                 <Container maxW={{ base: "xl", md: "7xl" }}>
                     <SectionTitle secondary>Testify to our works</SectionTitle>
                     <Stack
@@ -103,7 +139,8 @@ const ContactSection = () => {
                                             fontSize="20px"
                                             color="white"
                                         >
-                                            123 Main Street, New York, NY 10030
+                                            123 Main Street, Makati, Metro
+                                            Manila 10030
                                         </Text>
                                     </Box>
                                 </Flex>

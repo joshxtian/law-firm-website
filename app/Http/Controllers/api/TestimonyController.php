@@ -10,33 +10,14 @@ use Illuminate\Support\Facades\DB;
 
 class TestimonyController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    //GET All Testimonials
     public function index()
     {
         $data = TestimonyModel::all();
         return $data;
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    //CREATE A Testimonial
     public function store(Request $request)
     {
         $data = new TestimonyModel();
@@ -47,24 +28,15 @@ class TestimonyController extends Controller
         $data->save();
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
 
-
+    //GET All Unverified Testimonial
     public function showUnverified(){
         $data = TestimonyModel::where("isVerified","=",0)->get();
         return response()->json($data);
     }
 
 
+    //GET Verified Testimonials By Number
     public function showVerifiedByNumber($num){
         $count = TestimonyModel::where([["isVerified","=",1],["rating","=",5]])->count();
 
@@ -78,25 +50,7 @@ class TestimonyController extends Controller
        
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        $data = TestimonyModel::find($id);
-        return $data;
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    //UPDATE isVerified to 1
     public function updateToVerified($id)
     {
         $data = TestimonyModel::find($id);
@@ -104,12 +58,7 @@ class TestimonyController extends Controller
         $data->save();
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    //DELETE a testimonial by ID
     public function destroy($id)
     {   
         $data = TestimonyModel::find($id);

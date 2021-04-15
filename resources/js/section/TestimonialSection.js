@@ -64,6 +64,7 @@ const TestimonialSection = () => {
                                             (item, index) => {
                                                 return (
                                                     <Testimonials
+                                                        key={index}
                                                         message={item.message}
                                                         name={item.name}
                                                         rating={item.rating}

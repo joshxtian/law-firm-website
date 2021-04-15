@@ -1,5 +1,6 @@
 const about = [
   {
+    id:1,
     image:"./img/lawyer1.jpg",
     reversed:false,
     paragraph:[

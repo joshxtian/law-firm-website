@@ -12,7 +12,7 @@ const AboutSection = () => {
             {about.map((info) => {
                 return (
                     <>
-                        <Container maxW="8xl">
+                        <Container key={info.id} maxW="8xl">
                             <Stack
                                 direction={{
                                     base: "column-reverse",
@@ -26,7 +26,7 @@ const AboutSection = () => {
                                 >
                                     {info.paragraph.map(par=>{
                                         return <>
-                                        <DescriptionText>
+                                        <DescriptionText key={par.id}>
                                             {par}
                                         </DescriptionText>
                                         <br />
